@@ -82,14 +82,14 @@ class IOAnimation(object):
         main loop for the FuncAnimation function of matlplotlib
         :param i: frame number
         """
-        bit_size = self.get_rand_byte_size()
+        byte_size = self.get_rand_byte_size()
 
         start = time.time()
         f = open(os.devnull, "wb")
-        f.write(os.urandom(bit_size))
+        f.write(os.urandom(byte_size))
         elapsed = time.time() - start
 
-        self.S.update(bit_size / elapsed)
+        self.S.update(byte_size / elapsed)
 
         self.y[i % self.w_length] = self.S.get_mean() / 1e6
         self.yerr[i % self.w_length] = self.S.get_95_conf_intrv() / 1e6
