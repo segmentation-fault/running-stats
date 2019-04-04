@@ -87,6 +87,7 @@ class IOAnimation(object):
         start = time.time()
         f = open(os.devnull, "wb")
         f.write(os.urandom(byte_size))
+        f.close()
         elapsed = time.time() - start
 
         self.S.update(byte_size / elapsed)
